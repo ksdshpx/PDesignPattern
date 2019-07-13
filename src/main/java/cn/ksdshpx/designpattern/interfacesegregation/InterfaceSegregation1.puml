@@ -1,0 +1,14 @@
+@startuml
+Interface1 <.. A
+Interface1 <.. C
+interface Interface1{
+    void operater1();
+    void operater2();
+    void operater3();
+    void operater4();
+    void operater5();
+}
+Interface1 <|.. B
+Interface1 <|.. D
+
+@enduml
