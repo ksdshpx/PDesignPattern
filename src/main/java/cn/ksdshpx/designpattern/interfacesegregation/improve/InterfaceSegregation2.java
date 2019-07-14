@@ -1,4 +1,4 @@
-package cn.ksdshpx.designpattern.interfacesegregation.implement;
+package cn.ksdshpx.designpattern.interfacesegregation.improve;
 
 /**
  * Create with IntelliJ IDEA
