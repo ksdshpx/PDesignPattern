@@ -12,6 +12,7 @@ public class Sheep implements Cloneable{
     private Integer age;
     private String color;
     private String address = "蒙古羊";
+    private Sheep friend;
 
     public Sheep() {
     }
@@ -44,6 +45,14 @@ public class Sheep implements Cloneable{
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Sheep getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Sheep friend) {
+        this.friend = friend;
     }
 
     @Override
