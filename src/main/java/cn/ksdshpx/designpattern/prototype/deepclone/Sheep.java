@@ -1,5 +1,7 @@
 package cn.ksdshpx.designpattern.prototype.deepclone;
 
+import java.io.*;
+
 /**
  * Create with IntelliJ IDEA
  * Create by peng.x
@@ -7,7 +9,7 @@ package cn.ksdshpx.designpattern.prototype.deepclone;
  * Time: 11:44
  * Description:羊实体
  */
-public class Sheep implements Cloneable {
+public class Sheep implements Cloneable, Serializable {
     private String name;
     private Integer age;
     private String color;
@@ -65,6 +67,7 @@ public class Sheep implements Cloneable {
                 '}';
     }
 
+    //深拷贝方式1:利用clone方法
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Object deep = super.clone();
@@ -73,5 +76,55 @@ public class Sheep implements Cloneable {
             sheep.setFriend((Sheep) sheep.getFriend().clone());
         }
         return sheep;
+    }
+
+    //深拷贝方式2:利用序列化与反序列化(推荐使用)
+    public Object deepClone() {
+        ByteArrayOutputStream bos = null;
+        ObjectOutputStream oos = null;
+        ByteArrayInputStream bis = null;
+        ObjectInputStream ois = null;
+        try {
+            //序列化当前对象
+            oos = new ObjectOutputStream(bos);
+            oos.writeObject(this);
+            //反序列化
+            bis = new ByteArrayInputStream(bos.toByteArray());
+            ois = new ObjectInputStream(bis);
+            Sheep copySheep = (Sheep) ois.readObject();
+            return copySheep;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (bis != null) {
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -21,5 +21,9 @@ public class ClientTest {
         System.out.println(sheep3 + ",sheep3.friend:" + sheep3.getFriend().hashCode());
         System.out.println(sheep4 + ",sheep4.friend:" + sheep4.getFriend().hashCode());
         System.out.println(sheep5 + ",sheep5.friend:" + sheep5.getFriend().hashCode());
+        Sheep sheep6 = (Sheep) sheep.deepClone();
+        Sheep sheep7 = (Sheep) sheep.deepClone();
+        System.out.println(sheep6 + ",sheep6.friend:" + sheep6.getFriend().hashCode());
+        System.out.println(sheep7 + ",sheep7.friend:" + sheep7.getFriend().hashCode());
     }
 }
