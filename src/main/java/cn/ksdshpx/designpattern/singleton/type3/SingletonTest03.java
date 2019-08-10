@@ -9,9 +9,11 @@ package cn.ksdshpx.designpattern.singleton.type3;
  */
 public class SingletonTest03 {
     public static void main(String[] args) {
-        Singleton instance = Singleton.getInstance();
-        Singleton instance2 = Singleton.getInstance();
-        System.out.println(instance == instance2);//true
+        Thread t1 = new Thread(new ExecutorThread());
+        Thread t2 = new Thread(new ExecutorThread());
+        t1.start();
+        t2.start();
+        System.out.println("Excutor End..");
     }
 }
 
