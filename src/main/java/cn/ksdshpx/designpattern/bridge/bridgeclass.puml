@@ -1,0 +1,37 @@
+@startuml
+
+abstract class Phone{
+    brand:Brand
+}
+
+class FoldedPhone extends Phone{
+
+}
+
+class UpRightPhone extends Phone{
+
+}
+
+interface Brand{
+    call():void
+}
+
+class Vivo implements Brand{
+
+}
+
+class Xiaomi implements Brand{
+
+}
+
+Phone o-- Brand
+
+class Client{
+
+}
+
+Client ..> Phone
+
+
+
+@enduml
