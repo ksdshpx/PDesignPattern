@@ -1,0 +1,24 @@
+@startuml
+
+interface ITeacherDao{
+    teach():void
+}
+
+class TeacherDao implements ITeacherDao{
+    teach():void
+}
+
+class TeacherDaoProxy implements ITeacherDao{
+    target:TeacherDao
+    teach():void
+}
+
+TeacherDao --o TeacherDaoProxy
+
+class Client{
+
+}
+
+Client ..> TeacherDaoProxy
+
+@enduml
